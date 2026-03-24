@@ -1,0 +1,120 @@
+PS F:\Forensic Suite\started> .\acquire.ps1
+
+=== Windows Live Forensic Acquisition ===
+
+[?] Available drives:
+
+Name Root         Free
+---- ----         ----
+C    C:\  357711134720
+D    D:\      57372672
+E    E:\    2130788352
+F    F:\   39231422464
+
+
+
+Enter drive letter for evidence storage (example: E:): F:
+[+] Evidence will be stored at: F:\Forensic_Case_20260210_151935
+
+[?] Disk acquisition mode:
+  1 - Logical (Drive Letters: C:, D:, etc.)
+  2 - Physical (Entire Disk: PhysicalDrive0, 1, etc.)
+Select option (1 or 2): 1
+
+[+] Available logical drives:
+
+
+DeviceID VolumeName FileSystem         Size
+-------- ---------- ----------         ----
+C:                  NTFS       477173379072
+D:                  NTFS          673181696
+E:       New Volume NTFS         2147479552
+
+
+Enter drive letters to image (comma-separated, example: C,D): D
+
+[+] Acquiring RAM...
+Writing driver to C:\Users\ADMINI~1\AppData\Local\Temp\3641730392.sys
+Stopped service winpmem
+Creating service winpmem
+Installed service winpmem
+Started service winpmem
+Memory Info:
+
+CR3: 0x1aa002
+NtBuildNumber: 0x65f4
+KernelBase: 0xfffff8067e200000
+KPCR:
+- 0xfffff8060dd60000
+- 0xffffad810cfd1000
+- 0xffffad810d051000
+- 0xffffad810d08b000
+NtBuildNumberAddr: 0xfffff8067f00a70c
+Run:
+- BaseAddress: 0x1f000
+  NumberOfBytes: 0x7d000
+- BaseAddress: 0x100000
+  NumberOfBytes: 0x2000
+- BaseAddress: 0x103000
+  NumberOfBytes: 0x1fefd000
+- BaseAddress: 0x20200000
+  NumberOfBytes: 0x1fe00000
+- BaseAddress: 0x40200000
+  NumberOfBytes: 0x8a89d000
+- BaseAddress: 0xcaae1000
+  NumberOfBytes: 0x2d6000
+- BaseAddress: 0xcafff000
+  NumberOfBytes: 0x1000
+- BaseAddress: 0x100000000
+  NumberOfBytes: 0x12f000000
+
+Padding 31 pages from 0x0
+Copying 125 pages (0x7d000) from 0x1f000
+Padding 100 pages from 0x9c000
+Copying 2 pages (0x2000) from 0x100000
+Padding 1 pages from 0x102000
+Copying 130813 pages (0x1fefd000) from 0x103000
+Padding 512 pages from 0x20000000
+Copying 130560 pages (0x1fe00000) from 0x20200000
+Padding 512 pages from 0x40000000
+Copying 567453 pages (0x8a89d000) from 0x40200000
+Padding 68 pages from 0xcaa9d000
+Copying 726 pages (0x2d6000) from 0xcaae1000
+Padding 584 pages from 0xcadb7000
+Copying 1 pages (0x1000) from 0xcafff000
+Padding 217088 pages from 0xcb000000
+Copying 1241088 pages (0x12f000000) from 0x100000000
+Completed imaging in 18m7.5354572s
+Stopped service winpmem
+Removing driver from C:\Users\ADMINI~1\AppData\Local\Temp\3641730392.sys
+[+] Imaging drive D
+      2 [main] dc3dd 8304 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+cygwin warning:
+  MS-DOS style path detected: F:\Forensic_Case_20260210_151935\logs\drive_D.log
+  Preferred POSIX equivalent is: /cygdrive/f/Forensic_Case_20260210_151935/logs/drive_D.log
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+
+dc3dd 7.2.641 started at 2026-02-10 15:37:51 +0530
+compiled options:
+command line: /dc3dd-dcfl-win7-64-7-2-641/dc3dd if=\\.\D: of=F:\Forensic_Case_20260210_151935\disks\drive_D.img hash=sha256 log=F:\Forensic_Case_20260210_151935\logs\drive_D.log
+sector size: 512 bytes (assumed)
+   673181696 bytes ( 642 M ) copied (  0% ),   78 s, 8.2 M/s
+
+input results for file `\\\\.\\D:':
+   1314808 sectors in
+   c27fac06f12bd28fd8b6e051edecebfb572779076479b5bbf1a9ec45dc00450f (sha256)
+
+output results for file `F:\\Forensic_Case_20260210_151935\\disks\\drive_D.img':
+   1314808 sectors out
+
+dc3dd completed at 2026-02-10 15:39:09 +0530
+
+
+[+] Collecting network and system metadata...
+
+[+] Acquisition complete
+[+] Evidence stored at: F:\Forensic_Case_20260210_151935
+PS F:\Forensic Suite\started>
