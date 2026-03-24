@@ -1,0 +1,194 @@
+1. Using Bash Script:
+
+sudo bash boot_mode.sh 
+NAME     SIZE TYPE FSTYPE   MOUNTPOINT                          LABEL              MODEL
+fd0        4K disk                                                                 
+loop0      4K loop squashfs /snap/bare/5                                           
+loop1     74M loop squashfs /snap/core22/2292                                      
+loop2   66.8M loop squashfs /snap/core24/1499                                      
+loop3  245.1M loop squashfs /snap/firefox/6565                                     
+loop4     74M loop squashfs /snap/core22/2411                                      
+loop5  250.8M loop squashfs /snap/firefox/7559                                     
+loop6   18.5M loop squashfs /snap/firmware-updater/212                             
+loop7   16.4M loop squashfs /snap/firmware-updater/216                             
+loop8  655.6M loop squashfs /snap/ghidra/35                                        
+loop9    516M loop squashfs /snap/gnome-42-2204/202                                
+loop10 531.4M loop squashfs /snap/gnome-42-2204/247                                
+loop11 606.1M loop squashfs /snap/gnome-46-2404/153                                
+loop12  91.7M loop squashfs /snap/gtk-common-themes/1535                           
+loop13   395M loop squashfs /snap/mesa-2404/1165                                   
+loop14  48.1M loop squashfs /snap/snapd/25935                                      
+loop15   576K loop squashfs /snap/snapd-desktop-integration/315                    
+loop16  10.8M loop squashfs /snap/snap-store/1270                                  
+loop17  49.3M loop squashfs /snap/snapd/24792                                      
+sda       20G disk                                                                 VMware Virtual S
+├─sda1     1M part                                                                 
+└─sda2    20G part ext4     /                                                      
+sdb     14.5G disk                                                                 v236w
+└─sdb1  14.5G part ntfs                                         Kali Linux amd64 1 
+sr0     95.3M rom  iso9660  /media/bamar/CDROM                  CDROM              VMware Virtual SATA CDRW Drive
+sr1     1024M rom                                                                  VMware Virtual SATA CDRW Drive
+target disk to analyze (e.g. sda, nvme0n1): sdb
+
+where to save evidence?
+  1) external USB drive (recommended)
+  2) local path on this machine
+choice [1/2]: 2
+output path: /home/bamar/Documents
+available space: 220MB | target disk size: 14806MB
+create full disk image? [y/N]: y
+
+
+2. Using Python Script
+
+sudo python3 main.py --output /tmp/cases --investigator hacker --no-ram-dump --module network
+~/Documents/HFSLinux$ cd /tmp/cases/
+/tmp/cases$ ls
+CASE-20260324-141608_20260324_141608
+/tmp/cases$ cd CASE-20260324-141608_20260324_141608/
+/tmp/cases/CASE-20260324-141608_20260324_141608$ ls
+disk  hashes.txt  logs  memory  network
+/tmp/cases/CASE-20260324-141608_20260324_141608$ cat hashes.txt 
+ee5246959aaced56d4bd9bc6a0d891571a19057729bffdc01b07cd1dbef762ee  network/connections.txt
+83e5c1168fbcc5b1f0c5de13539ebfad5fa58fc849cd9bae80b5b0108f2a75a7  network/connections.json
+d4f388d04a4f24316ed86850c2af248634664e57e091ae0d10a63866bdc69fee  network/listening.txt
+e42ab11ea2f10d617ddea2ec439c40168ec5f13b3e913a46d694cd4fb59e5276  network/arp.txt
+924dfd7d8717509032f340d284d086b149d856b7030a3d44303d66140e3147e5  network/arp.json
+0cb7180165de698e6bdbd0700f1b1a9a1987dd98d2b9e38dbbca1f5c7c7282df  network/interfaces.txt
+cb87cf46cf489722ce33d85c70629ecb0ca9fc649b06ae2badf1033eafc2916c  network/interfaces.json
+afa3d958599ec0d8c2bea7b9bcee164e63cc312492acfd443df156dda00532a8  network/routes.txt
+22473f720bdf0f4bab6ebd2e193c526d5b5e375d66ab299b03a4c375cd2e34a0  network/routes.json
+5edfe10d99131ca0605b55c4bc94ea711b2c3e42d6f04d36d6df328033a796b4  network/proc_net_tcp.txt
+5f4c6e5debc0199b82437b5ecdb8841e1bb7d2d53ddc42058da5359796e73277  network/proc_net_tcp6.txt
+44b77462686f46899d9f75ad30ccdca59b67d0bcd45be73600ea7897c8d0dec7  network/proc_net_udp.txt
+84781bdbc6216ab5a79add4d130f3ed8e8638e5543430642ed8ffd448d7d559d  network/proc_net_udp6.txt
+d259a36be7b98811725c45180b31999ee31dd5ac939b350f76c3b66591ff9140  network/proc_net_arp.txt
+7f12eaaacebe794069fbe1d822495d072e5b939eb4cc4a4d81aa8a00cf742d27  network/proc_net_dev.txt
+999346dedd24e4160f88ab554523856f2b2382b1d916447bf4a0b2ed3e565b3d  network/proc_net_if_inet6.txt
+012d7d4b56dc2d6d2ba0c62bbeea423542279629df8bcf6d41e967ae3e55cf98  network/proc_net_sockstat.txt
+f5107060afa743c7bbbbde6bf8033200338d0df9f3d9e8dfabcd02258c923097  network/resolv.conf
+e83760547a3b0a09524ff0d9dfb6acf49d77154a4448365d4b34682ff184a933  network/resolved_status.txt
+b852528aacf3fd5f45c5c3865215fd4095db6d2287f3a92dc23a1e423e5a0395  network/hosts.txt
+91d2e1890012562216b6713930f1adc488112be660fe85a96520bdeca7a08bae  network/iptables.txt
+952b0252289b6420904367d22ac612615a5f42e24dbf04a33c52019f19cd17df  network/iptables_nat.txt
+0b99c2fa2587317fb14d6b0eff5eef51535b9a4b29f97080e8b64edbdce03471  network/ip6tables.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  network/nftables.txt
+41de42ed5201da9f8bdd8c755c3d6d4afacca3021bbfaaeadf4aeaccf2dd0e33  network/ufw.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  network/wireless.txt
+b00b4653f5bd612551309a9924484baac3cb35071aae7a9988c09eae0f72d265  network/ssh_config
+e80087901a36eb487b8ca1d1202c2cd398bb801c242bff4daafe07e95562677c  network/authorized_keys_paths.txt
+38731527061bba02ca54544776e2e92ebe06625f9e75fc2506416a044141876f  network/syslog.txt
+9ef483ac12e89e0bbfac437e97a278b93f25ef664467ca87e6cd48279dd0b119  network/capture.pcap
+e23cfd24ad33bc7f59dba52da60d4f64dde33ea7d86a7d9a36c954d5e17e9d45  logs/results.json
+f0d00e4cda9d620bbf48fa1341f135bab113592153fe723abffc0babed71e866  logs/report.txt
+/tmp/cases/CASE-20260324-141608_20260324_141608$ ls
+disk  hashes.txt  logs  memory  network
+/tmp/cases/CASE-20260324-141608_20260324_141608$ cd disk/
+/tmp/cases/CASE-20260324-141608_20260324_141608/disk$ ls
+/tmp/cases/CASE-20260324-141608_20260324_141608/disk$ cd ..
+/tmp/cases/CASE-20260324-141608_20260324_141608$ cd network/
+/tmp/cases/CASE-20260324-141608_20260324_141608/network$ ls
+arp.json                   connections.json  interfaces.txt    listening.txt     proc_net_if_inet6.txt  proc_net_udp6.txt    routes.json  ufw.txt
+arp.txt                    connections.txt   ip6tables.txt     nftables.txt      proc_net_sockstat.txt  proc_net_udp.txt     routes.txt   wireless.txt
+authorized_keys_paths.txt  hosts.txt         iptables_nat.txt  proc_net_arp.txt  proc_net_tcp6.txt      resolv.conf          ssh_config
+capture.pcap               interfaces.json   iptables.txt      proc_net_dev.txt  proc_net_tcp.txt       resolved_status.txt  syslog.txt
+/tmp/cases/CASE-20260324-141608_20260324_141608/network$ cat connections.json 
+[
+  {
+    "proto": "udp",
+    "state": "UNCONN",
+    "local": "0.0.0.0:5353",
+    "peer": "0.0.0.0:*",
+    "process": "users:((\"avahi-daemon\",pid=949,fd=12))"
+  },
+  {
+    "proto": "udp",
+    "state": "UNCONN",
+    "local": "127.0.0.54:53",
+    "peer": "0.0.0.0:*",
+    "process": "users:((\"systemd-resolve\",pid=594,fd=16))"
+  },
+  {
+    "proto": "udp",
+    "state": "UNCONN",
+    "local": "127.0.0.53%lo:53",
+    "peer": "0.0.0.0:*",
+    "process": "users:((\"systemd-resolve\",pid=594,fd=14))"
+  },
+  {
+    "proto": "udp",
+    "state": "ESTAB",
+    "local": "192.168.13.134%ens33:68",
+    "peer": "192.168.13.254:67",
+    "process": "users:((\"NetworkManager\",pid=1132,fd=26))"
+  },
+  {
+    "proto": "udp",
+    "state": "UNCONN",
+    "local": "0.0.0.0:59770",
+    "peer": "0.0.0.0:*",
+    "process": "users:((\"avahi-daemon\",pid=949,fd=14))"
+  },
+  {
+    "proto": "udp",
+    "state": "UNCONN",
+    "local": "[::]:5353",
+    "peer": "[::]:*",
+    "process": "users:((\"avahi-daemon\",pid=949,fd=13))"
+  },
+  {
+    "proto": "udp",
+    "state": "UNCONN",
+    "local": "[::]:45898",
+    "peer": "[::]:*",
+    "process": "users:((\"avahi-daemon\",pid=949,fd=15))"
+  },
+  {
+    "proto": "tcp",
+    "state": "LISTEN",
+    "local": "127.0.0.54:53",
+    "peer": "0.0.0.0:*",
+    "process": "users:((\"systemd-resolve\",pid=594,fd=17))"
+  },
+  {
+    "proto": "tcp",
+    "state": "LISTEN",
+    "local": "127.0.0.53%lo:53",
+    "peer": "0.0.0.0:*",
+    "process": "users:((\"systemd-resolve\",pid=594,fd=15))"
+  },
+  {
+    "proto": "tcp",
+    "state": "LISTEN",
+    "local": "127.0.0.1:631",
+    "peer": "0.0.0.0:*",
+    "process": "users:((\"cupsd\",pid=1553,fd=7))"
+  },
+  {
+    "proto": "tcp",
+    "state": "LISTEN",
+    "local": "127.0.0.1:9050",
+    "peer": "0.0.0.0:*",
+    "process": "users:((\"tor\",pid=1664,fd=6))"
+  },
+  {
+    "proto": "tcp",
+    "state": "ESTAB",
+    "local": "192.168.13.134:56624",
+    "peer": "94.23.172.32:443",
+    "process": "users:((\"tor\",pid=1664,fd=11))"
+  },
+  {
+    "proto": "tcp",
+    "state": "ESTAB",
+    "local": "192.168.13.134:35602",
+    "peer": "188.165.136.211:8081",
+    "process": "users:((\"tor\",pid=1664,fd=12))"
+  },
+  {
+    "proto": "tcp",
+    "state": "LISTEN",
+    "local": "[::1]:631",
+    "peer": "[::]:*",
+    "process": "users:((\"cupsd\",pid=1553,fd=6))"
+  }
